@@ -10,7 +10,6 @@ namespace AuditLogTest.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "AuditLogTest.Models.AppContext";
         }
 
         protected override void Seed(AuditLogTest.Models.AppContext context)

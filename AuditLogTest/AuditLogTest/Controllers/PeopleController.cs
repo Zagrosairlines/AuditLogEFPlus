@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AuditLogTest.Models;
+using Z.EntityFramework.Plus;
 
 namespace AuditLogTest.Controllers
 {
@@ -50,8 +51,17 @@ namespace AuditLogTest.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                // ye kar hayiiiki
+
+                var audit = new Audit
+                {
+                    CreatedBy = "ZZZ Projects" // Optional
+                };
+
+
                 db.People.Add(person);
-                db.SaveChanges();
+                db.SaveChanges(audit);
                 return RedirectToAction("Index");
             }
 
@@ -82,8 +92,14 @@ namespace AuditLogTest.Controllers
         {
             if (ModelState.IsValid)
             {
+                var audit = new Audit
+                {
+                    CreatedBy = "ZZZ" // Optional
+                };
+
+
                 db.Entry(person).State = EntityState.Modified;
-                db.SaveChanges();
+                db.SaveChanges(audit);
                 return RedirectToAction("Index");
             }
             return View(person);
@@ -109,9 +125,13 @@ namespace AuditLogTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            var audit = new Audit
+            {
+                CreatedBy = "ZZZ" // Optional
+            };
             Person person = db.People.Find(id);
             db.People.Remove(person);
-            db.SaveChanges();
+            db.SaveChanges(audit);
             return RedirectToAction("Index");
         }
 

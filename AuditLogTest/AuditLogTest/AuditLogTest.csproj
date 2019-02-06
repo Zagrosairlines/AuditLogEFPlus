@@ -66,6 +66,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Z.EntityFramework.Plus.Audit.EF6, Version=1.8.5.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Plus.Audit.EF6.1.8.5\lib\net45\Z.EntityFramework.Plus.Audit.EF6.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -121,13 +124,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902061256154_InitialCreate.cs" />
-    <Compile Include="Migrations\201902061256154_InitialCreate.Designer.cs">
-      <DependentUpon>201902061256154_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902061258447_Init1.cs" />
-    <Compile Include="Migrations\201902061258447_Init1.Designer.cs">
-      <DependentUpon>201902061258447_Init1.cs</DependentUpon>
+    <Compile Include="Migrations\201902061310114_Init1.cs" />
+    <Compile Include="Migrations\201902061310114_Init1.Designer.cs">
+      <DependentUpon>201902061310114_Init1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppContext.cs" />
@@ -156,11 +155,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902061256154_InitialCreate.resx">
-      <DependentUpon>201902061256154_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902061258447_Init1.resx">
-      <DependentUpon>201902061258447_Init1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902061310114_Init1.resx">
+      <DependentUpon>201902061310114_Init1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

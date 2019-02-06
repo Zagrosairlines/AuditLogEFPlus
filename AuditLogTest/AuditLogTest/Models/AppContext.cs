@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Z.EntityFramework.Plus;
 
 namespace AuditLogTest.Models
 {
@@ -18,6 +19,18 @@ namespace AuditLogTest.Models
         public AppContext() : base("name=AppContext")
         {
         }
+
+
+        static AppContext()
+        {
+            AuditManager.DefaultConfiguration.AutoSavePreAction = (context, audit) =>
+               // ADD "Where(x => x.AuditEntryID == 0)" to allow multiple SaveChanges with same Audit
+               (context as AppContext).AuditEntries.AddRange(audit.Entries);
+        }
+
+
+        public DbSet<AuditEntry> AuditEntries { get; set; }
+        public DbSet<AuditEntryProperty> AuditEntryProperties { get; set; }
 
         public DbSet<Person> People { get; set; }
     }
